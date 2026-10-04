@@ -1,0 +1,2 @@
+-- Run once on an existing database to add the Team rankings feature (safe to run again)
+CREATE TABLE IF NOT EXISTS team_ratings(id SERIAL PRIMARY KEY, team_id INT NOT NULL REFERENCES teams ON DELETE CASCADE, format TEXT NOT NULL CHECK (format IN ('Test','ODI','T20I')), wins INT NOT NULL DEFAULT 0 CHECK (wins>=0), losses INT NOT NULL DEFAULT 0 CHECK (losses>=0), draws INT NOT NULL DEFAULT 0 CHECK (draws>=0), UNIQUE(team_id,format));

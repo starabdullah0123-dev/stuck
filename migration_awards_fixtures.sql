@@ -1,0 +1,3 @@
+-- Run once on an existing database to add Awards and Results & Fixtures (safe to run again)
+CREATE TABLE IF NOT EXISTS awards(id SERIAL PRIMARY KEY, kind TEXT NOT NULL CHECK (kind IN ('month','year')), title TEXT NOT NULL, period TEXT, status TEXT DEFAULT 'Winner announced', name TEXT NOT NULL, team_id INT REFERENCES teams ON DELETE SET NULL, photo TEXT, note TEXT);
+CREATE TABLE IF NOT EXISTS fixtures(id SERIAL PRIMARY KEY, kind TEXT NOT NULL CHECK (kind IN ('Result','Fixture')), series TEXT, venue TEXT, match_date TEXT NOT NULL, match_time TEXT DEFAULT '', format TEXT DEFAULT 'T20I', team_a INT NOT NULL REFERENCES teams ON DELETE CASCADE, team_b INT NOT NULL REFERENCES teams ON DELETE CASCADE, score_a TEXT, score_b TEXT, result TEXT, highlights TEXT, centre TEXT);

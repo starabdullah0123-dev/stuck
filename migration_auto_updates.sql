@@ -1,0 +1,8 @@
+-- UNITED KERALAM hourly auto-update support
+-- No existing data is deleted or rebuilt.
+-- The application creates/updates one news item tagged 'Auto Update' every hour.
+-- The hourly job READS existing database data to write the news item, but it does not
+-- modify player, team, venue, ticket, match, run, wicket, ranking or tournament records.
+-- The browser hourly timer fetches /api/news only; it does not reload the full database snapshot.
+-- The application also seeds the idempotent 2026 demo series fixture pack once:
+-- each team receives 5 T20, 3 ODI and 2 Test appearances (70 matches for 14 teams).
